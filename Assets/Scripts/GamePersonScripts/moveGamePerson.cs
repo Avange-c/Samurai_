@@ -11,9 +11,34 @@ public class moveGamePerson : MonoBehaviour
     public static float Score = 0f;
     public Rigidbody2D rb;
 
+    private SpriteRenderer spriteR;
+
+    public Sprite m_SpriteRenderer;
+    public Sprite m_SpriteRenderer_1;
+    public Sprite m_SpriteRenderer_2;
+    public Sprite m_SpriteRenderer_3;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteR = gameObject.GetComponent<SpriteRenderer>();
+        Time.timeScale = 1f;
+        spriteR.sprite =  m_SpriteRenderer_3;
+        switch (SkinCheck.SkinState)
+        {
+            case 0:
+                spriteR.sprite =  m_SpriteRenderer;
+                break;
+            case 1:
+                spriteR.sprite =  m_SpriteRenderer_1;
+                break;
+            case 2:
+                spriteR.sprite =  m_SpriteRenderer_2;
+                break;
+            case 3:
+                spriteR.sprite =  m_SpriteRenderer_3;
+                break;
+        }
     }
 
     
@@ -31,9 +56,13 @@ public class moveGamePerson : MonoBehaviour
             SceneManager.LoadScene(2);
             
         }
-    }
+        
+
+    } 
 
 
+
+    
     void OnCollisionEnter2D(Collision2D Ground)
     {
         onFloor = true;
@@ -42,5 +71,6 @@ public class moveGamePerson : MonoBehaviour
     {
         onFloor = false;
     }
-     
+
+       
 }
