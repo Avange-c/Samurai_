@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class ShotInEnemy : MonoBehaviour
 {
+    private Vector3 shift = new Vector3(1, 0, 0);
+
     public GameObject bullet;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && PauseScript._pause != 1)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && PauseScript._pause != 1 && EnemyMove._shootInEnemy == 1)
         {
-            Instantiate(bullet, transform.position, Quaternion.identity);
+            Instantiate(bullet, transform.position + shift, Quaternion.identity);
         }
     }
 

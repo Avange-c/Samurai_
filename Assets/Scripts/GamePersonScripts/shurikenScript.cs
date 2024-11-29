@@ -21,6 +21,7 @@ public class shurikenScript : MonoBehaviour
 			Destroy (col.gameObject);
             Destroy (this.gameObject);
             moveGamePerson.Score = moveGamePerson.Score + 1f;
+            EnemyMove._shootInEnemy = 0;
 		}
 	}
     

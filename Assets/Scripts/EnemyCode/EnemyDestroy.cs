@@ -8,6 +8,7 @@ public class EnemyDestroy : MonoBehaviour
   {
 		if (col.gameObject.tag == "Enemy") {
 			Destroy (col.gameObject);
+			EnemyMove._shootInEnemy = 0;
 		}
 	}
 

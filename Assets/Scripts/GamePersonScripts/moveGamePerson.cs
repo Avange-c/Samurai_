@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class moveGamePerson : MonoBehaviour
 {
     private float _speedX = 15f;
-    private float _jumpPower = 200f;
+    private float _jumpPower = 700f;
     private bool onFloor = false;
     public static float Score = 0f;
     public Rigidbody2D rb;
@@ -51,7 +51,7 @@ public class moveGamePerson : MonoBehaviour
         {
             rb.AddForce(transform.up * _jumpPower);
         }
-        if (Score == -2)
+        if (Score <= -7)
         {
             SceneManager.LoadScene(2);
             
@@ -63,13 +63,19 @@ public class moveGamePerson : MonoBehaviour
 
 
     
-    void OnCollisionEnter2D(Collision2D Ground)
+    void OnCollisionEnter2D(Collision2D col)
     {
-        onFloor = true;
+        if (col.gameObject.tag == "Ground")
+        {
+            onFloor = true;    
+		}
     }
-    void OnCollisionExit2D(Collision2D Ground)
+    void OnCollisionExit2D(Collision2D col)
     {
-        onFloor = false;
+        if (col.gameObject.tag == "Ground")
+        {
+            onFloor = false;    
+		}
     }
 
        
